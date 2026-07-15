@@ -60,3 +60,20 @@ Integrated the CISA Known Exploited Vulnerabilities (KEV) Catalog into the Signa
 ### Screenshot
 
 ![CISA KEV API Success](../screenshots/cisa-kev-api-success.png)
+
+## NVD CVE Integration
+
+Integrated the NIST National Vulnerability Database (NVD) API to allow SignalDeck to retrieve detailed information for a specific CVE.
+
+### Work Completed
+
+- Added the NVD CVE API as a second cybersecurity intelligence source
+- Created the `/cyber/cve/{cve_id}` API endpoint
+- Added support for looking up individual vulnerabilities by CVE ID
+- Tested the endpoint using `CVE-2021-44228` (Log4Shell)
+- Verified the endpoint through FastAPI Swagger UI
+- Successfully received a `200 OK` response from the CVE lookup
+
+### Screenshot
+
+![NVD CVE API Success](../screenshots/nvd-cve-api-success.png)
