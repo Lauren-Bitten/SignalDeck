@@ -109,3 +109,40 @@ The `/cyber/cve/{cve_id}` endpoint now returns:
 ### Screenshot
 
 ![NVD CVE Enriched Response](../screenshots/nvd-cve-enriched-success.png)
+
+## Combined CISA KEV and NVD Intelligence
+
+Created a combined cyber intelligence endpoint that enriches actively exploited vulnerability data from the CISA Known Exploited Vulnerabilities (KEV) Catalog with vulnerability severity data from the NIST National Vulnerability Database (NVD).
+
+### Features Implemented
+
+- Added the `/cyber/kev/enriched` endpoint
+- Retrieves actively exploited vulnerabilities from CISA KEV
+- Uses CVE IDs to retrieve additional vulnerability intelligence from NVD
+- Combines data from both sources into a single API response
+- Returns vendor, product, vulnerability name, and remediation dates
+- Includes known ransomware campaign usage when available
+- Adds CVSS score and severity from NVD
+- Adds vulnerability descriptions from NVD
+- Preserves CISA data if an individual NVD enrichment request fails
+- Limited requests to a maximum of 10 vulnerabilities to reduce external API load
+- Successfully tested the combined endpoint with a `200 OK` response
+
+### Combined Intelligence Data
+
+The `/cyber/kev/enriched` endpoint returns:
+
+- CVE ID
+- Vendor
+- Product
+- Vulnerability name
+- Date added to CISA KEV
+- Remediation due date
+- Known ransomware campaign use
+- CVSS score
+- Severity
+- Vulnerability description
+
+### Screenshot
+
+![CISA KEV and NVD Enriched Intelligence](../screenshots/kev-enriched-success.png)
