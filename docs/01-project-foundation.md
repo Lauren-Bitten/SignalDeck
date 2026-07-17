@@ -219,3 +219,27 @@ Future development will expand the threat calculation to incorporate additional 
 ### Screenshot
 
 ![SignalDeck Global Cyber Threat Level](../screenshots/signaldeck-global-threat-level.png)
+
+## Vulnerability Search and Filtering
+
+### Work Completed
+
+- Added interactive vulnerability search functionality
+- Added severity-based filtering for Critical, High, Medium, and Low vulnerabilities
+- Added real-time result counts showing filtered vulnerabilities
+- Added support for searching by CVE ID, vendor, product, and vulnerability name
+- Added a no-results message for searches or filters with no matches
+- Separated the interactive vulnerability list into a reusable Next.js Client Component
+- Preserved server-side vulnerability data fetching while enabling client-side interaction
+
+### Search and Filter Behavior
+
+The vulnerability search updates results dynamically as the user types. Users can search across CVE IDs, vendors, products, and vulnerability names.
+
+The severity filter allows users to narrow the current vulnerability feed by severity classification. Search and severity filtering can also be used together.
+
+### Screenshots
+
+![SignalDeck Microsoft Search Filter](../screenshots/signaldeck-search-filter-microsoft.png)
+
+![SignalDeck High Severity Filter](../screenshots/signaldeck-severity-filter-high.png)
