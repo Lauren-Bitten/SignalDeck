@@ -173,3 +173,23 @@ This establishes the initial full-stack architecture for SignalDeck and provides
 ### Screenshot
 
 ![SignalDeck Frontend Dashboard](../screenshots/signaldeck-frontend-dashboard-success.png)
+
+## Dashboard Summary Cards
+
+### Work Completed
+
+- Added a summary section to the SignalDeck Cyber Intelligence Dashboard
+- Added a Critical Vulnerabilities metric
+- Added an Average CVSS metric
+- Added a Known Ransomware metric
+- Added a Latest Added vulnerability date metric
+- Calculated dashboard metrics dynamically from vulnerability data returned by the FastAPI backend
+- Added responsive summary cards using Tailwind CSS
+
+### Current Metrics
+
+The summary cards currently calculate metrics from the vulnerabilities returned by the `/cyber/kev/enriched` endpoint. Future development will expand these metrics to represent a broader vulnerability dataset.
+
+### Screenshot
+
+![SignalDeck Dashboard Summary Cards](../screenshots/signaldeck-dashboard-summary-cards.png)

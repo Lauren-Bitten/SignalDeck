@@ -31,6 +31,36 @@ async function getVulnerabilities(): Promise<Vulnerability[]> {
 export default async function Home() {
   const vulnerabilities = await getVulnerabilities();
 
+  const criticalCount = vulnerabilities.filter(
+    (vulnerability) => vulnerability.severity === "CRITICAL"
+  ).length;
+
+  const cvssScores = vulnerabilities
+    .map((vulnerability) => vulnerability.cvss_score)
+    .filter((score): score is number => score !== null);
+
+  const averageCvss =
+    cvssScores.length > 0
+      ? (
+          cvssScores.reduce((total, score) => total + score, 0) /
+          cvssScores.length
+        ).toFixed(1)
+      : "N/A";
+
+  const ransomwareCount = vulnerabilities.filter(
+    (vulnerability) =>
+      vulnerability.known_ransomware_use?.toLowerCase() === "known"
+  ).length;
+
+  const latestAdded =
+    vulnerabilities.length > 0
+      ? [...vulnerabilities].sort(
+          (a, b) =>
+            new Date(b.date_added).getTime() -
+            new Date(a.date_added).getTime()
+        )[0].date_added
+      : "N/A";
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <div className="mx-auto max-w-6xl px-6 py-10">
@@ -48,6 +78,36 @@ export default async function Home() {
             and NVD intelligence.
           </p>
         </header>
+
+        <section className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p className="text-sm text-slate-400">Critical Vulnerabilities</p>
+            <p className="mt-2 text-3xl font-bold text-red-400">
+              {criticalCount}
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p className="text-sm text-slate-400">Average CVSS</p>
+            <p className="mt-2 text-3xl font-bold text-amber-300">
+              {averageCvss}
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p className="text-sm text-slate-400">Known Ransomware</p>
+            <p className="mt-2 text-3xl font-bold text-orange-300">
+              {ransomwareCount}
+            </p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
+            <p className="text-sm text-slate-400">Latest Added</p>
+            <p className="mt-2 text-2xl font-bold text-violet-300">
+              {latestAdded}
+            </p>
+          </div>
+        </section>
 
         <section className="grid gap-6">
           {vulnerabilities.map((vulnerability) => (
