@@ -1,0 +1,115 @@
+type Vulnerability = {
+  cve_id: string;
+  vendor: string;
+  product: string;
+  name: string;
+  date_added: string;
+  due_date: string;
+  known_ransomware_use: string;
+  cvss_score: number | null;
+  severity: string | null;
+  description: string | null;
+};
+
+async function getVulnerabilities(): Promise<Vulnerability[]> {
+  const response = await fetch(
+    "http://127.0.0.1:8000/cyber/kev/enriched?limit=5",
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to load SignalDeck cyber intelligence");
+  }
+
+  const data = await response.json();
+
+  return data.vulnerabilities;
+}
+
+export default async function Home() {
+  const vulnerabilities = await getVulnerabilities();
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      <div className="mx-auto max-w-6xl px-6 py-10">
+        <header className="mb-10">
+          <p className="text-sm uppercase tracking-[0.3em] text-violet-400">
+            SignalDeck
+          </p>
+
+          <h1 className="mt-2 text-4xl font-bold">
+            Cyber Intelligence Dashboard
+          </h1>
+
+          <p className="mt-3 max-w-2xl text-slate-400">
+            Actively exploited vulnerabilities enriched with live CISA KEV
+            and NVD intelligence.
+          </p>
+        </header>
+
+        <section className="grid gap-6">
+          {vulnerabilities.map((vulnerability) => (
+            <article
+              key={vulnerability.cve_id}
+              className="rounded-2xl border border-slate-800 bg-slate-900 p-6 shadow-lg"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span className="rounded-full bg-red-500/15 px-3 py-1 text-sm font-semibold text-red-400">
+                      {vulnerability.severity ?? "UNKNOWN"}
+                    </span>
+
+                    <span className="text-sm text-slate-400">
+                      CVSS {vulnerability.cvss_score ?? "N/A"}
+                    </span>
+                  </div>
+
+                  <h2 className="mt-4 text-2xl font-semibold">
+                    {vulnerability.cve_id}
+                  </h2>
+
+                  <p className="mt-1 text-lg text-slate-300">
+                    {vulnerability.name}
+                  </p>
+                </div>
+
+                <div className="text-sm text-slate-400">
+                  <p>Added: {vulnerability.date_added}</p>
+                  <p>Due: {vulnerability.due_date}</p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div>
+                  <p className="text-sm text-slate-500">Vendor</p>
+                  <p className="font-medium">{vulnerability.vendor}</p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-slate-500">Product</p>
+                  <p className="font-medium">{vulnerability.product}</p>
+                </div>
+              </div>
+
+              <p className="mt-6 leading-7 text-slate-300">
+                {vulnerability.description ?? "No description available."}
+              </p>
+
+              <div className="mt-6 border-t border-slate-800 pt-4">
+                <p className="text-sm text-slate-400">
+                  Known ransomware use:{" "}
+                  <span className="font-semibold text-white">
+                    {vulnerability.known_ransomware_use}
+                  </span>
+                </p>
+              </div>
+            </article>
+          ))}
+        </section>
+      </div>
+    </main>
+  );
+}

@@ -146,3 +146,30 @@ The `/cyber/kev/enriched` endpoint returns:
 ### Screenshot
 
 ![CISA KEV and NVD Enriched Intelligence](../screenshots/kev-enriched-success.png)
+
+## Frontend Dashboard
+
+### Work Completed
+
+- Installed Node.js and npm for frontend development
+- Created the SignalDeck frontend using Next.js
+- Configured TypeScript, ESLint, Tailwind CSS, and the Next.js App Router
+- Created the initial Cyber Intelligence Dashboard interface
+- Connected the Next.js frontend to the FastAPI backend
+- Integrated the `/cyber/kev/enriched` endpoint into the dashboard
+- Successfully displayed live CISA Known Exploited Vulnerabilities as dashboard cards
+- Displayed CVE IDs, vulnerability names, vendors, products, dates, and ransomware-use information
+- Confirmed communication between the Next.js frontend and FastAPI backend
+- Identified NVD enrichment fields that require additional frontend/backend troubleshooting
+
+### Architecture Progress
+
+The current SignalDeck data flow is:
+
+`CISA KEV + NVD → FastAPI Backend → Enriched API Endpoint → Next.js Frontend Dashboard`
+
+This establishes the initial full-stack architecture for SignalDeck and provides a foundation for additional cybersecurity intelligence sources, dashboard features, and future mobile application development.
+
+### Screenshot
+
+![SignalDeck Frontend Dashboard](../screenshots/signaldeck-frontend-dashboard-success.png)
