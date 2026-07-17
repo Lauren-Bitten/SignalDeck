@@ -193,3 +193,29 @@ The summary cards currently calculate metrics from the vulnerabilities returned 
 ### Screenshot
 
 ![SignalDeck Dashboard Summary Cards](../screenshots/signaldeck-dashboard-summary-cards.png)
+
+## Global Cyber Threat Level
+
+### Work Completed
+
+- Added a Global Cyber Threat Level banner to the SignalDeck dashboard
+- Created dynamic threat-level logic based on vulnerability severity and CVSS scores
+- Added Critical, Elevated, Moderate, and Low threat classifications
+- Added contextual threat messaging based on the calculated threat level
+- Displayed the number of critical vulnerabilities in the current feed
+- Added a visual threat-level indicator above the dashboard summary metrics
+
+### Current Threat Logic
+
+The current threat level is calculated from vulnerabilities returned by the `/cyber/kev/enriched` endpoint:
+
+- Critical: At least one Critical vulnerability with a CVSS score of 9.0 or higher
+- Elevated: At least one High severity vulnerability
+- Moderate: Active vulnerabilities are present without a High or Critical classification
+- Low: No vulnerabilities are returned
+
+Future development will expand the threat calculation to incorporate additional intelligence sources and broader threat indicators.
+
+### Screenshot
+
+![SignalDeck Global Cyber Threat Level](../screenshots/signaldeck-global-threat-level.png)
