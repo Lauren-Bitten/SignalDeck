@@ -98,6 +98,22 @@ async def get_cve_details(cve_id: str):
 
         descriptions = cve.get("descriptions", [])
 
+        published = cve.get("published")
+        last_modified = cve.get("lastModified")
+
+        references = [
+            item.get("url")
+            for item in cve.get("references", [])
+            if item.get("url")
+        ][:5]
+
+        weaknesses = []
+
+        for weakness_group in cve.get("weaknesses", []):
+            for item in weakness_group.get("description", []):
+                if item.get("lang") == "en":
+                    weaknesses.append(item.get("value"))        
+
         description = next(
             (
                 item.get("value")
@@ -108,12 +124,16 @@ async def get_cve_details(cve_id: str):
         )
 
         return {
-            "cve_id": cve.get("id"),
-            "cvss_score": cvss_score,
-            "severity": severity,
-            "vector": vector,
-            "description": description,
-        }
+    "cve_id": cve.get("id"),
+    "cvss_score": cvss_score,
+    "severity": severity,
+    "vector": vector,
+    "description": description,
+    "published": published,
+    "last_modified": last_modified,
+    "weaknesses": weaknesses,
+    "references": references,
+}
 
     except HTTPException:
         raise

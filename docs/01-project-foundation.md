@@ -77,3 +77,35 @@ Integrated the NIST National Vulnerability Database (NVD) API to allow SignalDec
 ### Screenshot
 
 ![NVD CVE API Success](../screenshots/nvd-cve-api-success.png)
+
+## NVD CVE Data Enrichment
+
+Enhanced the SignalDeck NVD CVE lookup endpoint to provide additional vulnerability intelligence for use in the future Cyber dashboard.
+
+### Features Implemented
+
+- Added CVE publication date
+- Added last modified date
+- Added associated CWE weakness information
+- Added up to five external reference URLs
+- Maintained CVSS score, severity, vector, and vulnerability description
+- Tested the enriched endpoint using `CVE-2021-44228` (Log4Shell)
+- Verified the enriched API response returned `200 OK`
+
+### Enriched CVE Data
+
+The `/cyber/cve/{cve_id}` endpoint now returns:
+
+- CVE ID
+- CVSS score
+- Severity
+- CVSS vector
+- Description
+- Published date
+- Last modified date
+- CWE weaknesses
+- External references
+
+### Screenshot
+
+![NVD CVE Enriched Response](../screenshots/nvd-cve-enriched-success.png)
