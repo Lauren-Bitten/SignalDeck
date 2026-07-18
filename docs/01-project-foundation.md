@@ -267,3 +267,21 @@ The details view retrieves enriched NVD data from the SignalDeck backend and pro
 ### Screenshot
 
 ![SignalDeck CVE Details View](../screenshots/signaldeck-cve-details-view.png)
+
+## Recent Threat Activity
+
+### Work Completed
+
+- Added a Recent Threat Activity section to the Cyber Intelligence Dashboard
+- Displays the three most recently added vulnerabilities from the current intelligence feed
+- Shows CVE ID, severity, CVSS score, vendor, product, and date added
+- Dynamically sorts vulnerability data by the CISA KEV date added
+- Integrated the activity feed between the dashboard summary metrics and vulnerability search tools
+
+### Purpose
+
+The Recent Threat Activity feed provides analysts with a quick view of newly added vulnerabilities without requiring them to review the full vulnerability list.
+
+### Screenshot
+
+![SignalDeck Recent Threat Activity](../screenshots/signaldeck-recent-threat-activity.png)

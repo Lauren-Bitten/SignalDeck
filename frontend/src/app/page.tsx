@@ -1,4 +1,5 @@
 import VulnerabilityList from "./VulnerabilityList";
+import RecentThreatActivity from "./RecentThreatActivity";
 
 type Vulnerability = {
   cve_id: string;
@@ -165,7 +166,8 @@ export default async function Home() {
             </p>
           </div>
         </section>
-
+        <RecentThreatActivity vulnerabilities={vulnerabilities} />
+        
         <VulnerabilityList vulnerabilities={vulnerabilities} />
       </div>
     </main>
