@@ -243,3 +243,27 @@ The severity filter allows users to narrow the current vulnerability feed by sev
 ![SignalDeck Microsoft Search Filter](../screenshots/signaldeck-search-filter-microsoft.png)
 
 ![SignalDeck High Severity Filter](../screenshots/signaldeck-severity-filter-high.png)
+
+## CVE Details View
+
+### Work Completed
+
+- Added dedicated CVE detail pages using dynamic Next.js routes
+- Made CVE IDs clickable from the vulnerability dashboard
+- Connected individual CVE pages to the FastAPI `/cyber/cve/{cve_id}` endpoint
+- Added detailed NVD vulnerability intelligence
+- Displayed CVSS score and CVSS vector information
+- Added published and last modified timestamps
+- Added CWE weakness information
+- Added external vulnerability references
+- Added navigation back to the main Cyber Intelligence Dashboard
+
+### CVE Drill-Down Workflow
+
+Users can search or filter vulnerabilities from the main dashboard and select a CVE ID to open its dedicated intelligence page.
+
+The details view retrieves enriched NVD data from the SignalDeck backend and provides additional technical information for vulnerability investigation.
+
+### Screenshot
+
+![SignalDeck CVE Details View](../screenshots/signaldeck-cve-details-view.png)
