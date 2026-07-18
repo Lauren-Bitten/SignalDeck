@@ -285,3 +285,20 @@ The Recent Threat Activity feed provides analysts with a quick view of newly add
 ### Screenshot
 
 ![SignalDeck Recent Threat Activity](../screenshots/signaldeck-recent-threat-activity.png)
+
+## Intelligence Refresh Control
+
+### Work Completed
+
+- Added a Last Updated indicator to the Cyber Intelligence Dashboard
+- Added a Refresh Intelligence button for manually refreshing dashboard data
+- Displays the time of the latest dashboard refresh
+- Integrated the refresh control above the Global Cyber Threat Level section
+
+### Purpose
+
+The refresh control gives users visibility into when the dashboard intelligence was last loaded and provides a simple way to manually retrieve the latest available vulnerability data.
+
+### Screenshot
+
+![SignalDeck Refresh Intelligence](../screenshots/signaldeck-refresh-intelligence.png)
