@@ -1,6 +1,7 @@
 import VulnerabilityList from "./VulnerabilityList";
 import RecentThreatActivity from "./RecentThreatActivity";
 import DashboardRefresh from "./DashboardRefresh";
+import ThreatOverview from "./ThreatOverview";
 
 type Vulnerability = {
   cve_id: string;
@@ -109,7 +110,7 @@ export default async function Home() {
             and NVD intelligence.
           </p>
         </header>
-        
+
         <DashboardRefresh />
 
         <section className="mb-8 rounded-3xl border border-red-500/30 bg-red-500/10 p-6">
@@ -170,6 +171,8 @@ export default async function Home() {
           </div>
         </section>
         <RecentThreatActivity vulnerabilities={vulnerabilities} />
+
+        <ThreatOverview vulnerabilities={vulnerabilities} />
 
         <VulnerabilityList vulnerabilities={vulnerabilities} />
       </div>

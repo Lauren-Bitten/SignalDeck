@@ -302,3 +302,21 @@ The refresh control gives users visibility into when the dashboard intelligence 
 ### Screenshot
 
 ![SignalDeck Refresh Intelligence](../screenshots/signaldeck-refresh-intelligence.png)
+## Threat Intelligence Overview
+
+### Work Completed
+
+- Added a Threat Intelligence Overview section to the Cyber Intelligence Dashboard
+- Added a Top Affected Vendors view based on the current vulnerability feed
+- Dynamically groups vulnerabilities by vendor
+- Ranks vendors by the number of vulnerabilities represented in the feed
+- Displays up to five of the most affected vendors
+- Integrated the overview between Recent Threat Activity and vulnerability search tools
+
+### Purpose
+
+The Threat Intelligence Overview helps analysts quickly identify which vendors are most represented in the current vulnerability feed, providing additional context about technologies affected by actively exploited vulnerabilities.
+
+### Screenshot
+
+![SignalDeck Threat Intelligence Overview](../screenshots/signaldeck-threat-intelligence-overview.png)
