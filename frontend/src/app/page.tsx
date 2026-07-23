@@ -2,6 +2,7 @@ import VulnerabilityList from "./VulnerabilityList";
 import RecentThreatActivity from "./RecentThreatActivity";
 import DashboardRefresh from "./DashboardRefresh";
 import ThreatOverview from "./ThreatOverview";
+import RemediationPriority from "./RemediationPriority";
 
 type Vulnerability = {
   cve_id: string;
@@ -173,6 +174,8 @@ export default async function Home() {
         <RecentThreatActivity vulnerabilities={vulnerabilities} />
 
         <ThreatOverview vulnerabilities={vulnerabilities} />
+
+        <RemediationPriority vulnerabilities={vulnerabilities} />
 
         <VulnerabilityList vulnerabilities={vulnerabilities} />
       </div>

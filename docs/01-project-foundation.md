@@ -320,3 +320,23 @@ The Threat Intelligence Overview helps analysts quickly identify which vendors a
 ### Screenshot
 
 ![SignalDeck Threat Intelligence Overview](../screenshots/signaldeck-threat-intelligence-overview.png)
+
+## Remediation Priority
+
+### Work Completed
+
+- Added a Remediation Priority section to the Cyber Intelligence Dashboard
+- Uses CISA KEV remediation due dates to prioritize vulnerabilities
+- Sorts vulnerabilities by the closest remediation deadline
+- Displays the three highest-priority vulnerabilities
+- Added dynamic priority labels including Overdue, Urgent, Due Soon, and Upcoming
+- Displays the number of days remaining until each remediation deadline
+- Integrated CVE, CVSS score, vendor, product, and due date information
+
+### Purpose
+
+The Remediation Priority section helps analysts quickly identify vulnerabilities requiring the most immediate attention. By using CISA KEV remediation deadlines, SignalDeck turns vulnerability intelligence into actionable remediation priorities.
+
+### Screenshot
+
+![SignalDeck Remediation Priority](../screenshots/signaldeck-remediation-priority.png)
